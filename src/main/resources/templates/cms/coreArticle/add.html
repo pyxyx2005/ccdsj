@@ -1,0 +1,48 @@
+<!--# layout("/common/layout.html",{"jsBase":"/js/cms/coreArticle/"}){ -->
+
+<form class="layui-form layui-form-pane" id="addForm">
+    <div class="layui-row">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+            <label class="layui-form-label">title</label>
+				<div class="layui-input-inline">
+					<input type="text" name="title" class="layui-input" >
+				</div>
+            </div>
+            <div class="layui-inline">
+            <label class="layui-form-label">pubdata</label>
+				<div class="layui-input-inline">
+					<input type="text" name="pubdata" class="layui-input input-date" >
+				</div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+            <label class="layui-form-label">contents</label>
+				<div class="layui-input-inline">
+					<input type="text" name="contents" class="layui-input" >
+				</div>
+            </div>
+            <div class="layui-inline">
+            <label class="layui-form-label">uid</label>
+				<div class="layui-input-inline">
+					<input type="text" name="uid" class="layui-input" >
+				</div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <!-- 业务对象得有一个字段保存附件id，假设是attachmentId  -->
+        <layui:attachment name="attachmentId" batchFileUUID="${uuid()}"  bizType="entity.name" isNew="true"  />
+    </div>
+    <layui:submitButtons id="addButton" />
+</form>
+<!--#} -->
+<script>
+layui.use(['add'], function(){
+    var coreArticleAdd = layui.add
+    coreArticleAdd.init();
+});
+</script>

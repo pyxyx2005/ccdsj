@@ -1,0 +1,49 @@
+<!--# layout("/common/layout.html",{"jsBase":"/js/cms/coreArticle/"}){ -->
+
+<form class="layui-form layui-form-pane" id="updateForm">
+    <div class="layui-row">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+            <label class="layui-form-label">title</label>
+				<div class="layui-input-inline">
+					<input type="text" id="title" name="title"  value="${coreArticle.title}"   class="layui-input" >
+				</div>
+            </div>
+            <div class="layui-inline">
+            <label class="layui-form-label">pubdata</label>
+				<div class="layui-input-inline">
+					<input type="text" id="pubdata" name="pubdata"  value="${coreArticle.pubdata,"yyyy-MM-dd"}"   class="layui-input input-date" >
+				</div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+            <label class="layui-form-label">contents</label>
+				<div class="layui-input-inline">
+					<input type="text" id="contents" name="contents"  value="${coreArticle.contents}"   class="layui-input" >
+				</div>
+            </div>
+            <div class="layui-inline">
+            <label class="layui-form-label">uid</label>
+				<div class="layui-input-inline">
+					<input type="text" id="uid" name="uid"  value="${coreArticle.uid}"   class="layui-input" >
+				</div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <layui:attachment name="attachmentId" batchFileUUID="${coreArticle.attachmentId!uuid()}" isNew="false" bizId="${coreArticle.id}" bizType="CoreArticle"/>
+    </div>
+	<!-- 业务对象须有hidden字段，保存delFlag和version字段-->
+    <input type="hidden" name="id" value=${coreArticle.id} />
+    <layui:submitButtons id="updateButton" />
+</form>
+<!--#} -->
+<script>
+layui.use(['edit'], function(){
+    var coreArticleEdit = layui.edit
+    coreArticleEdit.init();
+});
+</script>
